@@ -1,0 +1,97 @@
+:root {
+  --border-radius: 1.6rem;
+  --title-3: 2rem;
+  --body-1: 1.6rem;
+  --body-2: 1.4rem;
+  --shadow-border: 0.1rem solid var(--shadow-color);
+  --primary-focus-border: 0.1rem solid var(--primary-accent-color);
+  --secondary-focus-border: 0.1rem solid var(--tertiary-accent-color);
+  --radio-btn-border: 0.1rem solid var(--primary-accent-color);
+  --primary-btn-color: var(--primary-accent-color)
+}
+
+@media (prefers-color-scheme:dark) {
+  :root {
+      --primary-background-color: #0f181a;
+      --secondary-background-color: #1a2528;
+      --tertiary-background-color: #202e31;
+      --primary-text-color: #fff;
+      --primary-accent-color: #03abd1;
+      --secondary-accent-color: #00ff33;
+      --tertiary-accent-color: #007c8f;
+      --shadow-color: #384345;
+      --svg-btn-fill: #7f9a9f;
+      --svg-btn-hover: #bbd6dc;
+      --primary-btn-hover: #00d1ff;
+      --button-text-color: #0C1011;
+      --header-background-color: #0f181a80
+  }
+}
+
+@media (prefers-color-scheme:light) {
+  :root {
+      --primary-background-color: #cfdadc;
+      --secondary-background-color: transparent;
+      --tertiary-background-color: #d9e2e3;
+      --primary-text-color: #0C1011;
+      --primary-accent-color: #00bbe5;
+      --secondary-accent-color: #00f531;
+      --tertiary-accent-color: #007c8f;
+      --shadow-color: #a4b4b8;
+      --svg-btn-fill: #4a5c60;
+      --svg-btn-hover: #0C1011;
+      --primary-btn-hover: #00c8f5;
+      --button-text-color: #0C1011
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0
+}
+
+html {
+  font-size: 62.5%
+}
+
+body {
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+  font-family: "satoshi variable";
+  font-size: var(--body-1)
+}
+
+nav {
+  display: flex;
+  background: var(--primary-background-color);
+  height: 5.6rem;
+  padding: 0 2.4rem;
+  align-items: center;
+  width: 100%;
+  backdrop-filter: blur(4rem);
+  flex-shrink: 0;
+  border-bottom: var(--shadow-border)
+}
+
+#root {
+  flex-direction: column
+}
+
+#root,body,html,main {
+  height: 100%;
+  display: flex
+}
+
+#root,body,html {
+  width: 100%;
+  overflow: hidden
+}
+
+main {
+  overflow: auto;
+  scrollbar-color: #979797 transparent;
+  scrollbar-width: thin;
+  flex-direction: column;
+  align-items: center
+}
