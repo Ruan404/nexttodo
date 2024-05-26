@@ -1,4 +1,10 @@
 import "./globals.css";
+import localFont from 'next/font/local'
+
+const satoshi = localFont({
+  src: './Satoshi-Variable.ttf',
+  display: 'swap',
+})
 
 export const metadata = {
   title: "Todo Next App",
@@ -8,10 +14,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        
-      </head>
-      <body>
+      <head></head>
+      <body className={satoshi.className}>
         <div id="root">
           <nav>
             <p>Todos</p>
