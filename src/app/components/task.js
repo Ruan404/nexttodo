@@ -85,9 +85,10 @@ export default function Task(props) {
               checked={status}
               onChange={handleSubmit}
               value={name}
+              id={`radio-${id}`}
             />
             <input type="hidden" name="id" value={id} />
-            <label>{name}</label>
+            <label htmlFor={`radio + ${id}`}>{name}</label>
           </form>
           <form
             id={mode === "edit" ? "" : styles.hide}
@@ -110,12 +111,12 @@ export default function Task(props) {
           </form>
         </div>
         <div className={styles.actions}>
-          <button onClick={status === false ? handleEdit : null}>
+          <span onClick={status === false ? handleEdit : null}>
             <EditSvgComponent className={styles.actionBtn} />
-          </button>
-          <button onClick={() => handleDelete(id)}>
+          </span>
+          <span onClick={() => handleDelete(id)}>
             <DeleteSvgComponent className={styles.actionBtn} />
-          </button>
+          </span>
         </div>
       </div>
     </div>

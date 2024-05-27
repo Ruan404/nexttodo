@@ -76,12 +76,6 @@
   width: 100%;
 }
 
-.actions button {
-  appearance: none;
-  border: none;
-  background: transparent;
-}
-
 .addTask {
   display: flex;
   gap: 1.6rem;
@@ -141,6 +135,11 @@
   border-radius: 50%;
   outline: none;
   flex-shrink: 0;
+  cursor: pointer;
+}
+
+.actionForm label{
+  cursor: pointer
 }
 
 .actionForm input[type="text"] {
