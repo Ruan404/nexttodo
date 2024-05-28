@@ -88,7 +88,7 @@ export default function Task(props) {
               id={`radio-${id}`}
             />
             <input type="hidden" name="id" value={id} />
-            <label htmlFor={`radio + ${id}`}>{name}</label>
+            <label htmlFor={`radio-${id}`}>{name}</label>
           </form>
           <form
             id={mode === "edit" ? "" : styles.hide}
