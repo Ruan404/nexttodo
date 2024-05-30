@@ -109,6 +109,8 @@ main {
 }
 
 .switchTheme:after {
+  content: "";
+  position: absolute;
   width: 2.24rem;
   height: 2.24rem;
   background: var(--switch-mask-background-color);
@@ -139,13 +141,10 @@ main {
 }
 
 #root:after {
+  content: "";
+  position: absolute;
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at 50% 10%,rgba(0, 255, 148, 0.2),transparent 50%),radial-gradient(circle at 10% 90%, rgba(0, 209, 255, 0.2), transparent 40%),radial-gradient(circle at 90% 90%, rgba(0, 255, 240, 0.2), transparent 40%),var(--gradient-bacground-color);
   z-index: -1;
-}
-
-:after {
-  content: "";
-  position: absolute;
 }
