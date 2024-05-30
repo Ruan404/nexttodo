@@ -15,7 +15,7 @@ const changeStatus = (id) => {
 };
 
 const deleteTask = (id) => {
-  taskData.splice(findId(id.id), 1);
+  taskData.splice(id, 1);
 };
 
 const findId = (index) => {

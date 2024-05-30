@@ -58,7 +58,7 @@ export async function DELETE(req, res) {
 
     deleteTask(id);
 
-    return new Response(JSON.stringify(taskData));
+    return new Response("ok");
   } catch (err) {
     console.log(err);
   }
