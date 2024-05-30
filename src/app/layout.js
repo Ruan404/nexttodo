@@ -1,10 +1,13 @@
 import "./globals.css";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import ThemeToggle from "./components/themeToggle";
+import { DataProvider } from "./contexts/DataContext";
 
 const satoshi = localFont({
-  src: './Satoshi-Variable.ttf',
-  display: 'swap',
-})
+  src: "./Satoshi-Variable.ttf",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Todo Next App",
@@ -16,12 +19,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
       <body className={satoshi.className}>
-        <div id="root">
-          <nav>
-            <p>Todos</p>
-          </nav>
-          {children}
-        </div>
+        <ThemeProvider>
+          <div id="root">
+            <nav>
+              <p className="logo">Todos</p>
+              <ThemeToggle />
+            </nav>
+            <DataProvider>{children}</DataProvider>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

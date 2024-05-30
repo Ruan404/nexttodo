@@ -3,27 +3,28 @@
   display: grid;
   padding: 3.2rem;
   gap: 2.4rem;
-  max-width: 44.2rem;
+  max-width: 44.2rem
+}
+
+.progress,.progressInfo {
+  display: flex;
+  flex-direction: column
 }
 
 .progress {
   width: 100%;
-  display: flex;
-  flex-direction: column;
   padding: 2.4rem;
   gap: 2.4rem;
   border: var(--shadow-border);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius)
 }
 
 .progressInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  gap: .8rem
 }
 
 .progress h3 {
-  font-size: var(--title-3);
+  font-size: var(--title-3)
 }
 
 .progressBar {
@@ -32,97 +33,92 @@
   accent-color: var(--primary-accent-color);
   border: var(--shadow-border);
   border-radius: 1.6rem;
-  appearance: none;
+  appearance: none
 }
 
 .progressBar::-webkit-progress-bar {
-  background: transparent;
-  border-radius: 1.6rem;
+  background: 0 0;
+  border-radius: 1.6rem
 }
 
 .progressBar::-moz-progress-bar {
-  background: transparent;
-  border-radius: 1.6rem;
+  background: 0 0;
+  border-radius: 1.6rem
 }
 
 .progressBar::-webkit-progress-value {
   background: var(--primary-accent-color);
-  border-radius: 1.6rem;
+  border-radius: 1.6rem
 }
 
 .taskList {
   display: grid;
-  gap: 1.6rem;
+  gap: 1.6rem
+}
+
+.addTask input[type=text],.task {
+  width: 100%;
+  border-radius: 1.6rem;
+  background: var(--secondary-background-color);
+  border: var(--shadow-border);
+  padding: 1.6rem
 }
 
 .task {
   display: flex;
-  padding: 1.6rem;
-  border: var(--shadow-border);
-  background: var(--secondary-background-color);
-  width: 100%;
-  gap: 1.6rem;
-  border-radius: 1.6rem;
+  gap: 1.6rem
 }
 
 .task:hover {
-  background: var(--tertiary-background-color);
+  background: var(--tertiary-background-color)
 }
 
-.actions {
-  display: flex;
-  gap: 1.4rem;
-  align-items: center;
-  width: 100%;
+.focus {
+  border: var(--primary-focus-border);
 }
 
-.actions button {
-  appearance: none;
-  border: none;
-  background: transparent;
+.actions,.addTask {
+  align-items: center
 }
 
 .addTask {
   display: flex;
-  gap: 1.6rem;
-  align-items: center;
+  gap: 1.6rem
 }
 
-.addTask input[type="text"] {
-  width: 100%;
+.addTask input[type=text] {
   height: 4rem;
-  border-radius: 1.6rem;
-  background: var(--secondary-background-color);
-  border: var(--shadow-border);
   color: inherit;
-  outline: none;
-  padding: 1.6rem;
+  outline: 0;
   font-family: inherit;
-  font-size: var(--body-2);
+  font-size: var(--body-2)
 }
 
-.addTask input[type="text"]:focus {
-  border: var(--primary-focus-border);
+.addTask input[type=text]:focus {
+  border: var(--primary-focus-border)
+}
+
+.actionForm input[type=radio],.addTask button {
+  appearance: none;
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer
 }
 
 .addTask button {
-  appearance: none;
   width: 4rem;
   height: 4rem;
   background: var(--primary-btn-color);
   color: var(--button-text-color);
-  border-radius: 50%;
-  border: none;
-  line-height: 0.1rem;
+  border: 0;
+  line-height: .1rem;
   font-size: 2.4rem;
-  font-weight: bold;
-  font-family: inherit;
-  cursor: pointer;
-  flex-shrink: 0;
+  font-weight: 700;
+  font-family: inherit
 }
 
 .addTask button:hover {
-  background: var(--primary-btn-hover);
+  background: var(--primary-btn-hover)
 }
 
 .actionForm {
@@ -130,105 +126,87 @@
   justify-content: space-between;
   width: 100%;
   gap: 2.4rem;
-  font-size: var(--body-2);
+  font-size: var(--body-2)
 }
 
-.actionForm input[type="radio"] {
-  appearance: none;
+.actionForm input[type=radio] {
   width: 1.8rem;
   height: 1.8rem;
   border: var(--radio-btn-border);
-  border-radius: 50%;
-  outline: none;
-  flex-shrink: 0;
+  outline: 0
 }
 
-.actionForm input[type="text"] {
+.actionForm label {
+  cursor: pointer
+}
+
+.actionForm input[type=text] {
   appearance: none;
-  outline: none;
-  border: var(--shadow-border);
-  padding: 0.8rem;
+  outline: 0;
+  border: 0;
+  padding: .8rem;
   font-family: inherit;
   font-size: inherit;
   color: inherit;
-  background: transparent;
-  border-radius: 0.4rem;
-  width: 100%;
-}
-
-.actionForm input[type="text"]:focus {
-  border: var(--secondary-focus-border);
+  background: 0 0;
+  border-radius: .4rem;
+  width: 100%
 }
 
 .backBtn {
-  border: var(--shadow-border);
-  background: transparent;
-  border-radius: 0.4rem;
+  background: 0 0;
   display: flex;
-  height: 100%;
-  align-items: center;
-  aspect-ratio: 1;
-  justify-content: center;
-}
-
-.backBtn:hover {
-  border: var(--secondary-focus-border);
 }
 
 .backBtn svg {
-  transition: all 300ms ease-in;
+  transition: all 300ms ease-in
 }
 
 .backBtn svg:hover {
-  fill: var(--tertiary-accent-color);
-  transform: translateX(-0.6rem);
+  transform: translateX(-.6rem)
 }
 
 .actionBtn {
   cursor: pointer;
-  fill: var(--svg-btn-fill);
+  fill: var(--svg-btn-fill)
 }
 
 .actionBtn:hover {
-  fill: var(--svg-btn-hover);
+  fill: var(--svg-btn-hover)
 }
 
 #taskDone {
-  text-decoration: line-through;
+  text-decoration: line-through
 }
 
-#taskDone input[type="radio"] {
+#taskDone input[type=radio] {
   background: var(--secondary-accent-color);
-  border: none;
+  border: 0
 }
 
-.taskInfo {
+.taskInfo,.taskInfo form {
   display: flex;
-  width: 100%;
+  width: 100%
 }
 
 .taskInfo form {
-  display: flex;
-  gap: 0.8rem;
-  width: 100%;
+  gap: .8rem;
   align-items: center;
-  font-weight: bold;
+  font-weight: 700
 }
 
 #hide {
-  display: none;
+  display: none
 }
 
-.actions {
+.actions,.saveForm {
   display: flex;
   gap: 1.6rem;
-  width: fit-content;
+  width: fit-content
 }
 
 .saveForm {
-  display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 1.6rem;
-  font-size: var(--body-2);
+  font-size: var(--body-2)
 }

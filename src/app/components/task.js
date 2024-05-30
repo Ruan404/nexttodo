@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "@/app/todo.module.css";
 import EditSvgComponent from "./edit";
 import DeleteSvgComponent from "./delete";
 import ArrowBackSvgComponent from "./arrowBack";
+import { DataContext } from "../contexts/DataContext";
 
 export default function Task(props) {
-  const { id, name, status, fetchData } = props;
+  const { id, name, status, updatePercentage } = props;
   const [mode, setMode] = useState("display");
   const [names, setName] = useState(name);
+  const { updateData } = useContext(DataContext);
 
   function handleEdit() {
     setMode("edit");
@@ -19,7 +21,12 @@ export default function Task(props) {
         method: "DELETE",
         body: JSON.stringify({ id: id }),
       });
-      fetchData();
+
+      if (res) {
+        const result = await res.json();
+        updateData(result);
+        updatePercentage(result);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +47,11 @@ export default function Task(props) {
         method: "PUT",
         body: formData,
       });
-      fetchData();
+      if (res) {
+        const result = await res.json();
+        updateData(result);
+        updatePercentage(result);
+      }
     } catch (err) {
       console.log(err);
     } finally {
@@ -56,7 +67,11 @@ export default function Task(props) {
         method: "PUT",
         body: formData,
       });
-      fetchData();
+      if (res) {
+        const result = await res.json();
+        updateData(result);
+        updatePercentage(result);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -72,7 +87,7 @@ export default function Task(props) {
   }
 
   return (
-    <div className={styles.task} id={status === true ? styles.taskDone : ""}>
+    <div className={mode === 'display' ? styles.task : `${styles.task} ${styles.focus}`} id={status === true ? styles.taskDone : ""}>
       <div className={styles.actionForm}>
         <div className={styles.taskInfo}>
           <form
@@ -85,9 +100,10 @@ export default function Task(props) {
               checked={status}
               onChange={handleSubmit}
               value={name}
+              id={`radio-${id}`}
             />
             <input type="hidden" name="id" value={id} />
-            <label>{name}</label>
+            <label htmlFor={`radio-${id}`}>{name}</label>
           </form>
           <form
             id={mode === "edit" ? "" : styles.hide}
@@ -110,12 +126,12 @@ export default function Task(props) {
           </form>
         </div>
         <div className={styles.actions}>
-          <button onClick={status === false ? handleEdit : null}>
+          <span onClick={status === false ? handleEdit : null}>
             <EditSvgComponent className={styles.actionBtn} />
-          </button>
-          <button onClick={() => handleDelete(id)}>
+          </span>
+          <span onClick={() => handleDelete(id)}>
             <DeleteSvgComponent className={styles.actionBtn} />
-          </button>
+          </span>
         </div>
       </div>
     </div>
