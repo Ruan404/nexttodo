@@ -19,17 +19,18 @@ export default function Todo() {
     }
   };
 
+  const fetchData = async () => {
+    try {
+      const res = await fetch("./api/tasks", { cache: "no-store" });
+      const tasks = await res.json();
+      updateData(tasks);
+      updatePercentage(tasks)
+    } catch (err) {
+      console.log(err);
+    }}
+
   useEffect(() => {
-    return async () => {
-      try {
-        const res = await fetch("./api/tasks", { cache: "no-store" });
-        const tasks = await res.json();
-        updateData(tasks);
-        updatePercentage(tasks);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    fetchData();
   }, []);
 
   async function saveTask(e) {
