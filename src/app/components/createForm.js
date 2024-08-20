@@ -4,7 +4,7 @@ import styles from "@/app/todo.module.css";
 import { createTask } from "../actions";
 import { useRef } from "react";
 
-export default function CreateForm() {
+export default function CreateForm({ mutate }) {
   const formRef = useRef();
 
   return (
@@ -14,6 +14,7 @@ export default function CreateForm() {
       action={async (formData) => {
         await createTask(formData);
         formRef.current?.reset();
+        mutate(); //revalidate data
       }}
     >
       <input

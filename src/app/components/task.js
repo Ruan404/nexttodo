@@ -5,7 +5,7 @@ import styles from "@/app/todo.module.css";
 import { DeleteIcon, EditIcon, ArrowBackIcon } from "./icons";
 import { deleteTask, updateStatus, updateName } from "../actions";
 
-export default function Task({ id, name, status }) {
+export default function Task({ id, name, status, mutate }) {
   const [mode, setMode] = useState("display");
   const [names, setName] = useState(name);
   const [isPending, startTransition] = useTransition();
@@ -69,7 +69,10 @@ export default function Task({ id, name, status }) {
         <div className={styles.taskInfo}>
           <form
             id={mode === "display" ? "" : styles.hide}
-            action={updateStatusWithId}
+            action={async (formData) => {
+              await updateStatusWithId(formData);
+              mutate(); //revalidate data
+            }}
           >
             <input
               type="radio"
@@ -83,7 +86,10 @@ export default function Task({ id, name, status }) {
           </form>
           <form
             id={mode === "edit" ? "" : styles.hide}
-            action={updateNameWithId}
+            action={async (formData) => {
+              await updateNameWithId(formData);
+              mutate(); //revalidate data
+            }}
             className={styles.saveForm}
           >
             <span onClick={handleBack} className={styles.backBtn}>
@@ -104,8 +110,21 @@ export default function Task({ id, name, status }) {
           <span onClick={status === false ? handleEdit : null}>
             <EditIcon className={styles.actionBtn} />
           </span>
-          <form action={deleteWithId}>
-            <button onClick={handleRequestSubmit} style={{appearance: "none", border:"none", outline:"none", background: "transparent"}}>
+          <form
+            action={async (formData) => {
+              await deleteWithId(formData);
+              mutate(); //revalidate data
+            }}
+          >
+            <button
+              onClick={handleRequestSubmit}
+              style={{
+                appearance: "none",
+                border: "none",
+                outline: "none",
+                background: "transparent",
+              }}
+            >
               <DeleteIcon className={styles.actionBtn} />
             </button>
           </form>
