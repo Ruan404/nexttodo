@@ -3,9 +3,10 @@ import * as React from "react";
 export const MoonIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
     width={24}
     height={24}
-    fill="none"
+    fill="currentColor"
     {...props}
   >
     <path
@@ -19,9 +20,10 @@ export const MoonIcon = (props) => (
 export const EditIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
     width={24}
     height={24}
-    fill="none"
+    fill="currentColor"
     {...props}
   >
     <path
@@ -36,9 +38,10 @@ export const EditIcon = (props) => (
 export const SunIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
     width={24}
     height={24}
-    fill="none"
+    fill="currentColor"
     {...props}
   >
     <path d="M12 4C12.2325 4 12.4211 4.18851 12.4211 4.42105V6.10526C12.4211 6.3378 12.2325 6.52632 12 6.52632C11.7675 6.52632 11.5789 6.3378 11.5789 6.10526V4.42105C11.5789 4.18851 11.7675 4 12 4Z" />
@@ -60,9 +63,10 @@ export const SunIcon = (props) => (
 export const DeleteIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
     width={24}
     height={24}
-    fill="none"
+    fill="currentColor"
     {...props}
   >
     <path
@@ -77,11 +81,25 @@ export const DeleteIcon = (props) => (
 export const ArrowBackIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
     width={24}
     height={24}
-    fill="none"
+    fill="currentColor"
     {...props}
   >
     <path d="M15.62 3.155a.53.53 0 0 1 0 .749L10.142 9.38a3.71 3.71 0 0 0 .003 5.244l5.473 5.474a.53.53 0 1 1-.752.745l-5.47-5.47a4.769 4.769 0 0 1-.003-6.742l5.476-5.476a.53.53 0 0 1 .75 0Z" />
+  </svg>
+);
+
+export const CrossIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M12.47 4.47a.47.47 0 0 0-.94 0v7.06H4.47a.47.47 0 0 0 0 .94h7.06v7.06a.47.47 0 0 0 .94 0v-7.06h7.06a.47.47 0 0 0 0-.94h-7.06V4.47Z" />
   </svg>
 );

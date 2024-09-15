@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
@@ -8,20 +8,20 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="switchTheme">
+    <div className="switchTheme shadow-border relative flex gap-1 rounded-lg bg-transparent p-1">
       <span
-        className="switchThemeBtn"
+        className={`${theme === "light" ? "text-swith-theme" : "text-swith-theme/50"} z-10 h-6 w-6`}
         onClick={() => toggleTheme("light")}
         disabled={theme === "light"}
       >
-        <SunIcon id="sun"/>
+        <SunIcon />
       </span>
       <span
-        className="switchThemeBtn"
+        className={`${theme === "dark" ? "text-swith-theme" : "text-swith-theme/50"} z-10 h-6 w-6`}
         onClick={() => toggleTheme("dark")}
         disabled={theme === "dark"}
       >
-        <MoonIcon id="moon"/>
+        <MoonIcon />
       </span>
     </div>
   );

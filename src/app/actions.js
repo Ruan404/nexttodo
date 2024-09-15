@@ -24,9 +24,9 @@ export async function updateStatus(id) {
 }
 
 export async function updateName(id, formData) {
-  const NewName = formData.get("name");
+  const newName = formData.get("name");
 
-  data[findId(id)].name = NewName;
+  data[findId(id)].name = newName;
 }
 
 export async function deleteTask(id) {

@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "@/app/todo.module.css";
 import Task from "@/app/components/task";
 import Progress from "./components/progress";
 import CreateForm from "./components/createForm";
@@ -15,13 +14,12 @@ export default function Todo() {
   });
 
   if (isLoading) return <div>Loading...</div>;
-
   return (
     <main>
-      <div className={styles.container}>
+      <div className="grid w-full max-w-[25rem] gap-6 p-6">
         <Progress tasks={data} />
         <CreateForm mutate={mutate} />
-        <div className={styles.taskList}>
+        <div className="grid gap-4">
           {data.map((el) => (
             <Task key={el.id} {...el} mutate={mutate} />
           ))}

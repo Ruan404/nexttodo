@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import styles from "@/app/todo.module.css";
 import { DeleteIcon, EditIcon, ArrowBackIcon } from "./icons";
 import { deleteTask, updateStatus, updateName } from "../actions";
 
@@ -57,23 +56,52 @@ export default function Task({ id, name, status, mutate }) {
     e.currentTarget.form?.requestSubmit();
   }
 
+  async function handleDelete(e) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    startTransition(() => {
+      deleteWithId(formData);
+      mutate();
+    });
+  }
+
+  async function handleNameChange(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    startTransition(() => {
+      updateNameWithId(formData);
+      mutate();
+    });
+  }
+
+  async function handleStatusChange(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    startTransition(() => {
+      updateStatusWithId(formData);
+      mutate();
+    });
+  }
+
   return (
     <div
       ref={taskRef}
-      className={
-        mode === "display" ? styles.task : `${styles.task} ${styles.focus}`
-      }
-      id={status === true ? styles.taskDone : ""}
+      className={`${
+        mode === "display" ? "shadow-border" : "primary-focus-border"
+      } flex w-full gap-4 rounded-2xl bg-secondary p-4 hover:bg-tertiary`}
     >
-      <div className={styles.actionForm}>
-        <div className={styles.taskInfo}>
-          <form
-            id={mode === "display" ? "" : styles.hide}
-            action={async (formData) => {
-              await updateStatusWithId(formData);
-              mutate(); //revalidate data
-            }}
+      <div className="flex w-full items-center gap-2">
+        {mode === "edit" ? (
+          <span
+            onClick={handleBack}
+            className="cursor-pointer text-svg-btn hover:text-svg-btn-hover"
           >
+            <ArrowBackIcon className="transition-all duration-300 ease-in hover:-translate-x-[0.375rem]" />
+          </span>
+        ) : (
+          <form onSubmit={handleStatusChange} className="flex">
             <input
               type="radio"
               name="status"
@@ -81,54 +109,52 @@ export default function Task({ id, name, status, mutate }) {
               onChange={handleRequestSubmit}
               value={name}
               id={`radio-${id}`}
-            />
-            <label htmlFor={`radio-${id}`}>{name}</label>
-          </form>
-          <form
-            id={mode === "edit" ? "" : styles.hide}
-            action={async (formData) => {
-              await updateNameWithId(formData);
-              mutate(); //revalidate data
-            }}
-            className={styles.saveForm}
-          >
-            <span onClick={handleBack} className={styles.backBtn}>
-              <ArrowBackIcon className={styles.actionBtn} />
-            </span>
-            <input
-              type="text"
-              name="name"
-              onKeyDown={handleKeyBoard}
-              value={names}
-              onChange={(e) => setName(e.target.value)}
-              autoComplete="off"
-              required
+              aria-label={`${name} ${id}`}
+              className={`${
+                status === true
+                  ? "border-none bg-checked"
+                  : "primary-focus-border"
+              } h-5 w-5 flex-shrink-0 cursor-pointer appearance-none rounded-full outline-none`}
             />
           </form>
-        </div>
-        <div className={styles.actions}>
-          <span onClick={status === false ? handleEdit : null}>
-            <EditIcon className={styles.actionBtn} />
-          </span>
-          <form
-            action={async (formData) => {
-              await deleteWithId(formData);
-              mutate(); //revalidate data
-            }}
+        )}
+        <form
+          onSubmit={handleNameChange}
+          className={`flex w-full items-center gap-2 text-sm`}
+        >
+          <input
+            type="text"
+            name="name"
+            onKeyDown={handleKeyBoard}
+            value={names}
+            aria-label={`${name} ${id}`}
+            onChange={(e) => setName(e.target.value)}
+            autoComplete="off"
+            required
+            readOnly={mode === "edit" ? false : true}
+            className={`${status === true ? "text-text/50 line-through" : ""} ${
+              mode === "display" ? "cursor-context-menu" : ""
+            } w-full bg-transparent p-2 text-sm outline-none`}
+          />
+        </form>
+      </div>
+      <div className="flex w-fit items-center gap-4 text-svg-btn">
+        <button
+          onClick={status === false ? handleEdit : null}
+          className="cursor-pointer hover:text-svg-btn-hover"
+          aria-label="edit task"
+        >
+          <EditIcon />
+        </button>
+        <form onSubmit={handleDelete} className="h-6">
+          <button
+            type="submit"
+            className="cursor-pointer hover:text-svg-btn-hover"
+            aria-label="delete task"
           >
-            <button
-              onClick={handleRequestSubmit}
-              style={{
-                appearance: "none",
-                border: "none",
-                outline: "none",
-                background: "transparent",
-              }}
-            >
-              <DeleteIcon className={styles.actionBtn} />
-            </button>
-          </form>
-        </div>
+            <DeleteIcon />
+          </button>
+        </form>
       </div>
     </div>
   );

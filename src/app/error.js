@@ -9,27 +9,10 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div
-      style={{
-        display: "grid",
-        placeContent: "center",
-        gap: "16px",
-        justifyItems: "center",
-        height: "100%"
-      }}
-    >
-      <p style={{fontSize: "18px"}}>Something went wrong!</p>
+    <div className="grid place-content-center gap-4 justify-items-center h-full">
+      <p className="text-lg">Something went wrong!</p>
       <button
-        style={{
-          appearance: "none",
-          background: "var(--primary-btn-color)",
-          color: "var(--button-text-color)",
-          fontFamily: "inherit",
-          fontWeight: "bold",
-          fontSize: "14px",
-          padding: "8px 16px",
-          border: "none",
-        }}
+        className="bg-primary-btn text-sm font-bold px-4 py-2 text-fg-btn"
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()

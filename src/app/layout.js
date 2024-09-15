@@ -20,8 +20,8 @@ export default function RootLayout({ children }) {
       <body className={satoshi.className}>
         <ThemeProvider>
           <div id="root">
-            <nav>
-              <p className="logo">Todos</p>
+            <nav className="flex h-14 flex-shrink-0 items-center justify-between bg-primary px-6">
+              <p className="font-bold tracking-wider line-through">Todos</p>
               <ThemeToggle />
             </nav>
             {children}
